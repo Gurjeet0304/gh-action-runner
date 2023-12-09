@@ -17,5 +17,13 @@ locals {
     ])))
 
     deployment_region = local.region[var.region]
+
+
+    cidr = {
+        aks = 4
+        node = 1
+        pe = 2
+        appgw = 3
+    }
 }
 

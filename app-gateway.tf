@@ -19,7 +19,7 @@ resource "azurerm_application_gateway" "k8s_gw" {
 
   gateway_ip_configuration {
     name      = "my-gateway-ip-configuration"
-    subnet_id = azurerm_subnet.frontend.id
+    subnet_id = azurerm_subnet.subnets["appgw"].id 
   }
 
   frontend_port {
@@ -40,8 +40,8 @@ resource "azurerm_application_gateway" "k8s_gw" {
     name                  = "test"
     cookie_based_affinity = "Disabled"
     path                  = "/path1/"
-    port                  = 80
-    protocol              = "Http"
+    port                  = 443
+    protocol              = "Https"
     request_timeout       = 1
   }
 
