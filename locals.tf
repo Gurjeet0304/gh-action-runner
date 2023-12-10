@@ -20,7 +20,7 @@ locals {
 
 
     cidr = {
-        aks = 4
+        aks = 0
         node = 1
         pe = 2
         appgw = 3

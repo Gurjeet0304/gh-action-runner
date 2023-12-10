@@ -40,8 +40,8 @@ resource "azurerm_application_gateway" "k8s_gw" {
     name                  = "test"
     cookie_based_affinity = "Disabled"
     path                  = "/path1/"
-    port                  = 443
-    protocol              = "Https"
+    port                  = 80
+    protocol              = "Http"
     request_timeout       = 1
   }
 

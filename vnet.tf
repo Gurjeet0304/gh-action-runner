@@ -18,3 +18,28 @@ resource "azurerm_subnet" "subnets" {
   virtual_network_name = azurerm_virtual_network.app_gw.name
   address_prefixes       = [cidrsubnet("10.1.0.0/21", 2 , each.value)]
 }
+
+
+resource "azurerm_public_ip" "internal-ip" {
+  name                = "ingress-Internal-pub-IP"
+  resource_group_name = azurerm_resource_group.aks-rg.name
+  location            = azurerm_resource_group.aks-rg.location
+  sku = "Standard"
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "Production"
+  }
+}
+
+resource "azurerm_public_ip" "external-ip" {
+  name                = "ingress-external-pub-IP"
+  resource_group_name = azurerm_resource_group.aks-rg.name
+  location            = azurerm_resource_group.aks-rg.location
+  sku = "Standard"
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "Production"
+  }
+}
